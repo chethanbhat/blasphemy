@@ -1,0 +1,24 @@
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      {% for link in site.data.navigation %}
+				{% if page.url == link.url %}
+		    <li><a class="active-link" href="{{ site.baseurl}}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+				{% else %}
+				<li><a href="{{ site.baseurl}}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+				{% endif %}
+			{% endfor %}
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+{% include browser-upgrade.html %}
+
+	<header class="masthead">
+	<div class="wrap">
+      <h1 class="site-title animated fadeIn"><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+			<h2 class="site-description animated fadeIn" itemprop="description">{{ site.description }}</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>

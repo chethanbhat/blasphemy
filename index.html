@@ -1,0 +1,21 @@
+---
+layout: page
+excerpt: "A simple and clean responsive Jekyll theme for words and photos."
+search_omit: true
+exclude_from_nav: true
+---
+
+<ul class="post-list">
+  {% assign sorted_pages = site.pages | sort:"order" %}
+  {% for page in sorted_pages %}
+    {% if page.layout == "page" %}
+      {% unless page.exclude_from_nav %}
+  <li><article><h3 class ="page-title"><a href="{% if site.baseurl == "/" %}{{ page.url }}{% else %}{{ page.url | prepend: site.baseurl }}{% endif %}">{%if page.header %}{{ page.header }}{% else %}{{ page.title }}{% endif %}</a></h1>
+      <p>{% if page.description %} <span class="excerpt">{{ page.description | strip_html | truncatewords:50}}</span>{% endif %}
+      <a class="read-more" href="{% if site.baseurl == "/" %}{{ page.url }}{% else %}{{ page.url | prepend: site.baseurl }}{% endif %}">[Read More]</a>
+      </p>
+  </article></li>
+      {% endunless %}
+    {% endif %}
+{% endfor %}
+</ul>
